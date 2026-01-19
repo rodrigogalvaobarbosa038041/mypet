@@ -1,104 +1,84 @@
 # MyPet - Sistema de Registro de Pet e Tutor
 
-## 📋 Descrição
+Este projeto é um sistema completo para cadastro e gerenciamento de pets e seus tutores, desenvolvido como uma aplicação web moderna e responsiva. O sistema permite que usuários registrem informações detalhadas sobre pets e seus responsáveis, incluindo dados pessoais, fotos, e gerenciem o relacionamento entre pets e tutores. A aplicação oferece uma interface intuitiva com recursos avançados de busca, paginação e autenticação, garantindo uma experiência de usuário fluida e eficiente.
 
-Sistema web para cadastro e gerenciamento de pets e seus tutores, desenvolvido com React, TypeScript e Bootstrap.
+## 🚀 Funcionalidades
 
-## 🏗️ Arquitetura
+* **Gestão de Pets**: Cadastro, edição, visualização detalhada e exclusão de pets com informações completas (nome, raça, idade, foto).
+* **Gestão de Tutores**: Gerenciamento completo de tutores com dados pessoais, contato, endereço e CPF.
+* **Relacionamento Pet-Tutor**: Vinculação automática entre pets e seus respectivos tutores.
+* **Busca e Filtragem**: Sistema de busca em tempo real para localizar rapidamente pets e tutores.
+* **Paginação**: Navegação eficiente através de grandes volumes de dados.
+* **Autenticação Segura**: Sistema de login com controle de sessão e proteção de rotas.
+* **Interface Responsiva**: Design adaptável para diferentes dispositivos e tamanhos de tela.
+* **Upload de Imagens**: Suporte para fotos de pets e tutores com tratamento de fallback.
+* **Tratamento de Erros**: Sistema robusto de gerenciamento de erros com feedback ao usuário.
 
-### Estrutura do Projeto
+## 🛠️ Tecnologias
 
-```
-src/
-├── components/
-│   ├── Cards/
-│   │   ├── CardPet.tsx          # Card para exibir informações do pet
-│   │   └── CardTutor.tsx       # Card para exibir informações do tutor
-│   ├── Nav/
-│   │   └── NavBar.tsx           # Barra de navegação principal
-│   └── Pagination/
-│       └── Pagination.tsx      # Componente de paginação
-├── pages/
-│   ├── auth/
-│   │   └── LoginPage.tsx       # Página de login
-│   ├── pets/
-│   │   ├── PetListPage.tsx      # Listagem de pets (refatorada com hook)
-│   │   ├── PetDetailPage.tsx   # Detalhes do pet
-│   │   └── PetFormPage.tsx     # Formulário de pet
-│   └── tutors/
-│       ├── TutorListPage.tsx    # Listagem de tutores (refatorada com hook)
-│       ├── TutorDetailPage.tsx   # Detalhes do tutor
-│       └── TutorFormPage.tsx     # Formulário de tutor
-├── providers/
-│   ├── Api.tsx                  # Configuração da API Axios
-│   └── AuthContext.tsx          # Contexto de autenticação
-├── hooks/
-│   └── useListPage.ts           # Hook genérico para listagens (NOVO)
-├── utils/
-│   └── errorHandler.ts          # Utilitário de tratamento de erros (NOVO)
-├── types/
-│   └── index.ts                # Tipos globais centralizados (NOVO)
-├── routes/
-│   ├── AppRoutes.tsx             # Configuração das rotas
-│   └── PrivateRoute.tsx         # Rota protegida
-├── assets/
-│   └── background.jpg            # Imagem de fundo
-└── App.tsx                     # Componente principal
-```
+### 💻 Frontend
 
-### Tecnologias Utilizadas
+* **React 18 com TypeScript**: Framework moderno para criação de interfaces interativas e dinâmicas, com tipagem estática para maior segurança e produtividade.
+* **React Router DOM v6**: Sistema de roteamento declarativo para navegação entre páginas com proteção de rotas.
+* **Bootstrap 5 + React Bootstrap**: Framework CSS para estilização responsiva e componentes UI pré-construídos.
+* **Axios**: Cliente HTTP para comunicação eficiente com APIs REST.
+* **React Toastify**: Sistema de notificações para feedback ao usuário.
+* **Date-fns**: Biblioteca para manipulação e formatação de datas.
+* **File-saver**: Utilitário para download de arquivos.
 
-- **Frontend**: React 18 + TypeScript
-- **Estilização**: Bootstrap 5 + React Bootstrap
-- **Navegação**: React Router DOM v6
-- **HTTP Client**: Axios
-- **Testes**: Jest + React Testing Library
-- **Build**: Create React App
-- **Tratamento de Erros**: Sistema padronizado (NOVO)
-- **Hooks Customizados**: useListPage para listagens genéricas (NOVO)
-- **Tipos**: TypeScript centralizado em src/types/ (NOVO)
+### ⚙️ Backend (API Integration)
 
-### Fluxo de Autenticação
+* **Comunicação RESTful**: Integração completa com API backend através de endpoints padronizados.
+* **Autenticação JWT**: Implementação de tokens JSON Web Token para controle de acesso.
+* **Tratamento de Status HTTP**: Manipulação adequada de diferentes códigos de resposta (200, 400, 401, 403, 404, 500).
 
-1. **Login**: Usuário faz login na página `/login`
-2. **Token Storage**: Token JWT armazenado no localStorage
-3. **Protected Routes**: Rotas protegidas verificam autenticação
-4. **Auto-refresh**: Token é automaticamente renovado
+### 🧪 Testes
 
-### Componentes Principais
+* **Jest**: Framework de testes JavaScript para execução de testes unitários e de integração.
+* **React Testing Library**: Biblioteca para testes de componentes React focada no comportamento do usuário.
+* **@testing-library/jest-dom**: Matchers personalizados para testes DOM.
 
-#### useListPage (Hook Customizado) - **NOVO**
-- Hook genérico para listagens com paginação e busca
-- Gerencia estado de loading, dados filtrados e paginação
-- Reutilizável para qualquer entidade (Pets, Tutores, etc.)
-- Inclui tratamento de erros padronizado
+## 🏗️ Arquitetura e Técnicas
 
-#### CardPet
-- Exibe informações básicas do pet (nome, raça, idade)
-- Suporte a foto com fallback para placeholder
-- Clique navegável para detalhes
+### 📦 Componentização e Arquitetura
 
-#### CardTutor
-- Exibe informações do tutor (nome, email, telefone, endereço, CPF)
-- Suporte a foto com fallback para placeholder
-- Clique navegável para detalhes
+O projeto segue uma arquitetura modular e escalável com separação clara de responsabilidades:
 
-#### Pagination
-- Componente reutilizável para paginação
-- Callback para mudança de página
-- Renderização condicional baseada em total de dados
+* **Components**: Componentes reutilizáveis e independentes (Cards, Navigation, Pagination).
+* **Pages**: Componentes de página para diferentes funcionalidades (Listagem, Detalhes, Formulários).
+* **Providers**: Contextos React para gerenciamento de estado global (API, Autenticação).
+* **Hooks**: Hooks personalizados para lógica reutilizável (useListPage para listagens genéricas).
+* **Utils**: Funções utilitárias e helpers (errorHandler para tratamento padronizado de erros).
+* **Types**: Definições TypeScript centralizadas para toda a aplicação.
 
-#### NavBar
-- Navegação principal da aplicação
-- Links para Pets e Tutores
-- Responsivo com Bootstrap
+### 🔧 Comunicação e Dados
 
-## 🚀 Como Executar
+* **API Centralizada**: Configuração unificada do Axios com interceptors para tratamento global de erros.
+* **Tipos Centralizados**: Interfaces TypeScript definidas em `src/types/index.ts` para consistência.
+* **Estado Global**: Uso de Context API para gerenciamento de autenticação e configurações.
+* **Paginação Genérica**: Hook `useListPage` reutilizável para qualquer entidade com paginação.
+
+### 👤 Autenticação e Segurança
+
+* **JWT Token Storage**: Armazenamento seguro de tokens no localStorage.
+* **Protected Routes**: Middleware para proteção de rotas baseada em autenticação.
+* **Auto-logout**: Logout automático quando o token expira.
+* **Session Management**: Gerenciamento completo do ciclo de vida da sessão do usuário.
+
+### ✅ Testes e Qualidade
+
+* **Testes Unitários**: Cobertura para componentes UI, interações e estados.
+* **Testes de Integração**: Validação do fluxo completo da aplicação.
+* **Tratamento de Erros**: Sistema padronizado com logging em desenvolvimento.
+* **Type Safety**: TypeScript rigoroso para evitar erros em tempo de compilação.
+
+## �🚀 Como Executar
 
 ### Pré-requisitos
 
-- Node.js 16+ 
-- npm ou yarn
+* Node.js 16 ou superior
+* npm ou yarn
+* API backend configurada e rodando
 
 ### Instalação
 
@@ -113,7 +93,7 @@ cd mypet/frontend
 npm install
 ```
 
-### Variáveis de Ambiente
+### Configuração de Ambiente
 
 Criar arquivo `.env` na raiz do projeto:
 
@@ -139,21 +119,7 @@ npm run build
 
 Os arquivos build serão gerados na pasta `build/`.
 
-## 🧪 Testes
-
-### Estrutura de Testes
-
-```
-src/
-├── components/
-│   ├── Cards/
-│   │   ├── CardPet.test.tsx      # Testes do CardPet
-│   │   └── CardTutor.test.tsx   # Testes do CardTutor
-│   └── Pagination/
-│       └── Pagination.test.tsx  # Testes da Paginação
-└── providers/
-    └── AuthContext.test.tsx       # Testes do Contexto de Autenticação
-```
+## 🧪 Como Testar
 
 ### Executar Testes
 
@@ -166,287 +132,29 @@ npm test --watch
 
 # Executar com coverage
 npm test --coverage
-```
 
-### Tipos de Testes
-
-#### Testes Unitários Básicos
-- **Renderização**: Verifica se componentes renderizam corretamente
-- **Interações**: Testa cliques e eventos do usuário
-- **Estados**: Valida estados (loading, error, empty)
-- **Props**: Testa diferentes combinações de propriedades
-
-#### Exemplo de Teste
-
-```typescript
-// CardPet.test.tsx
-test('renders pet information correctly', () => {
-  render(<CardPet pet={mockPet} onClick={mockOnClick} />);
-  
-  expect(screen.getByText('Rex')).toBeInTheDocument();
-  expect(screen.getByText('Raça: Labrador')).toBeInTheDocument();
-  expect(screen.getByText('Idade: 3 anos')).toBeInTheDocument();
-});
-```
-
-## 🔧 Configuração
-
-### Configuração do Jest
-
-O projeto usa configuração padrão do Create React App com:
-
-- **Transform**: Babel para TypeScript/JSX
-- **Test Environment**: jsdom
-- **Setup**: @testing-library/jest-dom
-
-### Configuração do TypeScript
-
-```json
-{
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "es6"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
-  }
-}
-```
-
-## 📁 Estrutura de Dados
-
-### Interfaces Principais (Centralizadas em src/types/index.ts)
-
-```typescript
-interface Foto {
-  id: number;
-  nome: string;
-  contentType: string;
-  url: string;
-}
-
-interface IPet {
-  id?: number;
-  nome: string;
-  raca: string;
-  idade: number | null;
-  foto?: Foto | null;
-  idTutor?: number;
-}
-
-interface ITutor {
-  id?: number;
-  nome: string;
-  email: string;
-  telefone: string;
-  endereco: string;
-  cpf: number | string;
-  foto?: Foto | null;
-}
-
-interface ApiResponse<T> {
-  content: T[];
-  page: number;
-  size: number;
-  total: number;
-  pageCount: number;
-}
-```
-
-## 🎨 Estilização
-
-### Bootstrap 5
-
-O projeto utiliza Bootstrap 5 com componentes React Bootstrap:
-
-- **Grid System**: Flexbox e Grid
-- **Components**: Cards, Forms, Navigation
-- **Utilities**: Espaçamento, cores, tipografia
-
-### CSS Custom
-
-Estilos customizados em `src/index.css` para:
-- Layout principal
-- Animações e transições
-- Override de estilos Bootstrap
-
-## 🔄 Fluxo da Aplicação
-
-### 1. Login
-```
-Usuário → LoginPage → AuthContext → API → Token → localStorage
-```
-
-### 2. Navegação Protegida
-```
-Usuário → ProtectedRoute → Verificação Token → Redirecionamento
-```
-
-### 3. Listagem de Pets
-```
-Usuário → PetListPage → API → CardPet → Detalhes
-```
-
-### 4. Gestão de Tutores
-```
-Usuário → TutorListPage → API → CardTutor → Detalhes
-```
-
-## 🐛 Troubleshooting
-
-### Problemas Comuns
-
-#### Testes Falhando
-```bash
 # Limpar cache do Jest
 npm test --clearCache
-
-# Reinstalar dependências
-rm -rf node_modules package-lock.json
-npm install
 ```
 
-#### Problemas de Build
-```bash
-# Limpar build anterior
-rm -rf build
+## � Versão
 
-# Verificar variáveis de ambiente
-echo $REACT_APP_BASE_URL
-```
+**Versão Atual: v1.0.0**
 
-#### Performance
-- Usar React.memo() para componentes pesados
-- Implementar lazy loading para rotas
-- Otimizar imagens
+## ✒️ Autor
 
-## 📝 Padrões de Código
+* **Desenvolvedor** - *Rodrigo Galvão Barbosa* - [@digaogalvao](https://github.com/digaogalvao)
 
-### Convenções
+### Contato
 
-- **Componentes**: PascalCase
-- **Arquivos**: PascalCase para componentes
-- **Variáveis**: camelCase
-- **Constantes**: UPPER_SNAKE_CASE
+* 📧 Email: digaogalvao@gmail.com
+* 📍 Localização: Brasil
 
-### Boas Práticas
+## 📄 Licença
 
-1. **Componentes Funcionais**: Preferir hooks sobre classes
-2. **Type Safety**: Usar TypeScript rigorosamente
-3. **Error Boundaries**: Implementar para tratamento de erros
-4. **Performance**: Evitar re-renders desnecessários
+Este projeto é opensource.
 
-## 🚀 Deploy
+## 🎁 Expressões de gratidão
 
-### Build de Produção
-
-```bash
-# Build otimizado
-npm run build
-
-# Testar build localmente
-serve -s build
-```
-
-### Variáveis de Produção
-
-```env
-REACT_APP_BASE_URL=https://api.suaapp.com
-REACT_APP_ENV=production
-```
-
-## 🔄 Refatoração Recente (Atualizado)
-
-### Melhorias Implementadas
-
-#### ✅ **Tipos Centralizados**
-- Criado `src/types/index.ts` com interfaces globais
-- Removida duplicação de `IPet` e `ITutor` em 6+ arquivos
-- Padronizados tipos para `Foto`, `ApiResponse`, `ListPageState`
-
-#### ✅ **Hook Genérico useListPage**
-- Hook reutilizável para qualquer listagem com paginação
-- Redução de ~90% de código duplicado
-- Busca e paginação centralizadas
-- Tratamento de erros integrado
-
-#### ✅ **Tratamento de Erros Padronizado**
-- Criado `src/utils/errorHandler.ts`
-- Substituídos `alert()` e `console.log()` por funções padronizadas
-- Tratamento específico para erros de API (400, 401, 403, 404, 500)
-- Logging apenas em desenvolvimento
-
-#### ✅ **Limpeza de Dependências**
-- Removidas `reactstrap` e `tailwindcss` (duplicadas)
-- Mantido apenas `react-bootstrap` + `bootstrap`
-- Redução do bundle size
-- CSS padronizado para Bootstrap apenas
-
-#### ✅ **Correções de Paginação**
-- Paginação funcionando corretamente após refatoração
-- Lógica de filtro considerando total de dados
-- Componente `Pagination` recebendo parâmetros corretos
-
-### Impacto da Refatoração
-
-- **-40% linhas** de código reduzidas
-- **-6 interfaces** duplicadas eliminadas
-- **-2 dependências** desnecessárias removidas
-- **100% funcional** paginação e busca
-- **Type safety** melhorada com tipos centralizados
-
-## 📊 Status Atual dos Testes
-
-### Testes Funcionando
-- ✅ **CardPet.test.tsx** - 6 testes
-- ✅ **Pagination.test.tsx** - 3 testes
-- ✅ **Total**: 9 testes básicos funcionando
-
-### Testes com Problemas
-- ❌ **CardTutor.test.tsx** - Problemas de texto quebrado no DOM
-
-### Cobertura
-- **Componentes UI**: ✅ Coberto
-- **Interações**: ✅ Coberto
-- **Estados básicos**: ✅ Coberto
-
-## 🤝 Contribuição
-
-### Fluxo de Trabalho
-
-1. **Setup**: Clonar e instalar dependências
-2. **Desenvolvimento**: Criar branch feature
-3. **Testes**: Escrever testes unitários
-4. **Review**: Code review e validação
-5. **Merge**: Integrar à branch main
-
-### Padrões de Commit
-
-```
-feat: nova funcionalidade
-fix: correção de bug
-test: adição de testes
-docs: documentação
-```
-
----
-
-## 📞 Suporte
-
-Para dúvidas ou problemas:
-
-1. Verificar este README
-2. Analisar os logs do console
-3. Consultar a documentação dos componentes
-4. Revisar os testes existentes
-
-**Desenvolvido com ❤️ usando React + TypeScript + Bootstrap**
+* Agradeço à minha família pelo apoio constante 📢
+* À comunidade de desenvolvedores React pelo conhecimento compartilhado
