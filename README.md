@@ -143,7 +143,9 @@ npm test --clearCache
 
 ## ✒️ Autor
 
-* **Desenvolvedor** - *Rodrigo Galvão Barbosa* - [@digaogalvao](https://github.com/digaogalvao)
+* **Candidato**: Rodrigo Galvão Barbosa
+* **N° Inscrição**: 16277
+* **Processo**: 001/2026
 
 ### Contato
 
